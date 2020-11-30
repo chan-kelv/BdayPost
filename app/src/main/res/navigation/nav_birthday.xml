@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_birthday"
+    app:startDestination="@id/birthdayLandingRoot">
+
+    <fragment
+        android:id="@+id/birthdayLandingRoot"
+        android:name="com.kelvin.bdaypost.LandingFragment"
+        android:label="fragment_landing"
+        tools:layout="@layout/fragment_bday_landing" />
+</navigation>

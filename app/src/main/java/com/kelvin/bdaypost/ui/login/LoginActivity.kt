@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.kelvin.bdaypost.MainActivity
+import com.kelvin.bdaypost.ui.landing.LandingActivity
 
 import com.kelvin.bdaypost.databinding.ActivityLoginBinding
 import com.kelvin.bdaypost.ui.login.viewModel.LoginFormState
@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
                 loginBinding.inputPassword.setText("")
             }
             validResult.success?.let {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, LandingActivity::class.java)
                 startActivity(intent)
                 finish()
             }
