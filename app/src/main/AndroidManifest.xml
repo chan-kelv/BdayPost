@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.landing.LandingActivity">
+        <activity android:name="com.kelvin.bdaypost.ui.birthday.landing.BirthdayMainActivity">
         </activity>
     </application>
 

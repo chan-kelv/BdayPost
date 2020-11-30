@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/birthdayLandingRoot"
-        android:name="com.kelvin.bdaypost.LandingFragment"
+        android:name="com.kelvin.bdaypost.BirthdayMainFragment"
         android:label="fragment_landing"
-        tools:layout="@layout/fragment_bday_landing" />
+        tools:layout="@layout/fragment_bday_main" >
+        <action
+            android:id="@+id/action_birthdayLandingRoot_to_addBirthdayFragment"
+            app:destination="@id/addBirthdayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addBirthdayFragment"
+        android:name="com.kelvin.bdaypost.ui.birthday.add.AddBirthdayFragment"
+        android:label="fragment_add_birthday"
+        tools:layout="@layout/fragment_add_birthday" />
 </navigation>

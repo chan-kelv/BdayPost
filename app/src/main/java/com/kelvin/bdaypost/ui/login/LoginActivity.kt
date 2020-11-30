@@ -6,7 +6,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.kelvin.bdaypost.ui.landing.LandingActivity
+import com.kelvin.bdaypost.BuildConfig
+import com.kelvin.bdaypost.ui.birthday.landing.BirthdayMainActivity
 
 import com.kelvin.bdaypost.databinding.ActivityLoginBinding
 import com.kelvin.bdaypost.ui.login.viewModel.LoginFormState
@@ -40,6 +41,11 @@ class LoginActivity : AppCompatActivity() {
         loginBinding.toggleLoginRegister.setOnCheckedChangeListener { buttonView, isChecked ->  observeRegisterToggle(isChecked)}
 
         loginBinding.bttnLogin.setOnClickListener { attemptAuthentication() }
+
+        if (BuildConfig.DEBUG) {
+            loginBinding.inputEmail.setText("test@user.com")
+            loginBinding.inputPassword.setText("123456")
+        }
     }
 
     private fun observeRegisterToggle(isRegister: Boolean) {
@@ -86,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
                 loginBinding.inputPassword.setText("")
             }
             validResult.success?.let {
-                val intent = Intent(this, LandingActivity::class.java)
+                val intent = Intent(this, BirthdayMainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
