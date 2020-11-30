@@ -2,7 +2,7 @@ package com.kelvin.bdaypost.ui.login.viewModel
 
 import androidx.lifecycle.*
 import com.kelvin.bdaypost.R
-import com.kelvin.bdaypost.data.loginData.LoginRepository
+import com.kelvin.bdaypost.data.loginData.AuthenticationRepository
 import com.kelvin.bdaypost.data.Result
 import com.kelvin.bdaypost.util.CredentialUtil.Companion.isValidEmail
 import kotlinx.coroutines.Dispatchers.IO
@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class LoginViewModel(private val loginRepo: LoginRepository) : ViewModel() {
+class LoginViewModel(private val authRepo: AuthenticationRepository) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -46,18 +46,27 @@ class LoginViewModel(private val loginRepo: LoginRepository) : ViewModel() {
     fun login(email: String, password: String) {
         viewModelScope.launch {
             withContext(IO) {
-                val result = loginRepo.login(email, password)
+                val result = authRepo.login(email, password)
                 withContext(Main) {
                     if (result is Result.Success) {
-                        _loginResult.value =
-                            LoginResult(
-                                success = result.data
-                            )
+                        _loginResult.value = LoginResult( success = result.data)
                     } else {
-                        _loginResult.value =
-                            LoginResult(
-                                error = R.string.login_failed
-                            )
+                        _loginResult.value = LoginResult( error = R.string.login_failed)
+                    }
+                }
+            }
+        }
+    }
+
+    fun register(email: String, password: String, displayName: String) {
+        viewModelScope.launch {
+            withContext(IO) {
+                val result = authRepo.register(email, password, displayName)
+                withContext(Main) {
+                    if (result is Result.Success) {
+                        _loginResult.value = LoginResult(success = result.data)
+                    } else {
+                        _loginResult.value = LoginResult( error = R.string.login_failed)
                     }
                 }
             }
@@ -65,11 +74,11 @@ class LoginViewModel(private val loginRepo: LoginRepository) : ViewModel() {
     }
 
     @Suppress("UNCHECKED_CAST")
-    class LoginViewModelFactory(private val loginRepo: LoginRepository = LoginRepository.getInstance()) :
+    class LoginViewModelFactory(private val authRepo: AuthenticationRepository = AuthenticationRepository.getInstance()) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return LoginViewModel(
-                loginRepo
+                authRepo
             ) as T
         }
     }

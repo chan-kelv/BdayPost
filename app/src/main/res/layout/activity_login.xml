@@ -47,15 +47,64 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/action_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_password"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_loginRegister"
         app:layout_constraintVertical_bias="0.2" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/toggle_loginRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_register"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/text_login"
+        app:layout_constraintTop_toBottomOf="@+id/input_password" />
+
+    <TextView
+        android:id="@+id/text_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/login_login_text"
+        app:layout_constraintBottom_toBottomOf="@+id/toggle_loginRegister"
+        app:layout_constraintEnd_toStartOf="@+id/toggle_loginRegister"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toggle_loginRegister" />
+
+    <TextView
+        android:id="@+id/text_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/login_register_text"
+        app:layout_constraintBottom_toBottomOf="@+id/toggle_loginRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/toggle_loginRegister"
+        app:layout_constraintTop_toTopOf="@+id/toggle_loginRegister" />
+
+    <EditText
+        android:id="@+id/input_displayName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:hint="@string/login_displayName_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/input_password"
+        app:layout_constraintStart_toStartOf="@+id/input_password"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_loginRegister" />
 
     <ProgressBar
         android:id="@+id/progress_loading"

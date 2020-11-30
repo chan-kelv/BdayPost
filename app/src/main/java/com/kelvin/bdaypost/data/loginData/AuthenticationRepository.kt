@@ -7,8 +7,8 @@ import com.kelvin.bdaypost.data.Result
  * maintains an in-memory cache of login status and user credentials information.
  */
 
-class LoginRepository private constructor(
-    var dataSource: LoginDataSource = LoginDataSource()
+class AuthenticationRepository private constructor(
+    var dataSource: AuthenticationNetwork = AuthenticationNetwork()
 ) {
     suspend fun login(email:String, password: String): Result<String> {
         dataSource.getCurrentUser()?.let { fbuser ->
@@ -26,15 +26,27 @@ class LoginRepository private constructor(
             }
         }
     }
+
+    suspend fun register(email: String, password: String, displayName: String): Result<String> {
+        val authResult = dataSource.register(email, password)
+        if (authResult is Result.Success) {
+            if (displayName.isNotBlank()) {
+                dataSource.changeDisplayName(displayName)
+            }
+            return Result.Success(authResult.data.user?.uid ?: "") // should not be null anyway if success
+        } else {
+            return Result.Error((authResult as Result.Error).exception)
+        }
+    }
+
     companion object {
         @Volatile
-        private var instance: LoginRepository? = null
+        private var instance: AuthenticationRepository? = null
 
-        fun getInstance() = instance
-            ?: synchronized(this) {
-            instance
-                ?: LoginRepository()
-                    .also { instance = it }
+        fun getInstance() = instance ?: synchronized(this) {
+            instance ?: AuthenticationRepository().also {
+                instance = it
+            }
         }
     }
 }

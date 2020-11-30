@@ -37,17 +37,32 @@ class LoginActivity : AppCompatActivity() {
             observeLoginResult(it)
         })
 
-        loginBinding.bttnLogin.setOnClickListener { attemptLogin() }
+        loginBinding.toggleLoginRegister.setOnCheckedChangeListener { buttonView, isChecked ->  observeRegisterToggle(isChecked)}
+
+        loginBinding.bttnLogin.setOnClickListener { attemptAuthentication() }
     }
 
-    private fun attemptLogin() {
+    private fun observeRegisterToggle(isRegister: Boolean) {
+        if (isRegister) {
+            loginBinding.inputDisplayName.visibility = View.VISIBLE
+        } else {
+            loginBinding.inputDisplayName.visibility = View.GONE
+        }
+    }
+
+    private fun attemptAuthentication() {
         val email = loginBinding.inputEmail.text.toString()
         val password = loginBinding.inputPassword.text.toString()
 
         val isValidLoginFields = loginVM.validateLoginFormState(email, password)
         if (isValidLoginFields) {
             loginBinding.progressLoading.visibility = View.VISIBLE
-            loginVM.login(email, password)
+            if (loginBinding.toggleLoginRegister.isChecked) { // Register
+                val displayName = loginBinding.inputDisplayName.text.toString()
+                loginVM.register(email, password, displayName)
+            } else { // Login
+                loginVM.login(email, password)
+            }
         }
     }
 
