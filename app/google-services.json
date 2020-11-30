@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "956805452745",
+    "firebase_url": "https://birthdaypost.firebaseio.com",
+    "project_id": "birthdaypost",
+    "storage_bucket": "birthdaypost.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956805452745:android:52833ab22f3bd2d69b0e18",
+        "android_client_info": {
+          "package_name": "com.kelvin.bdaypost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956805452745-47c60dauv276qpqpe10bopd4t8ppr24g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQMDZ3PzRyn7wR42FHDECmQnJKj9z1HeA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956805452745-47c60dauv276qpqpe10bopd4t8ppr24g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
