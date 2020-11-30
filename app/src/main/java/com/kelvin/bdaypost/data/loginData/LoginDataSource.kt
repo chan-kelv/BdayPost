@@ -1,8 +1,9 @@
-package com.kelvin.bdaypost.data
+package com.kelvin.bdaypost.data.loginData
 
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.kelvin.bdaypost.data.Result
 import kotlinx.coroutines.tasks.await
 import timber.log.Timber
 import java.lang.Exception
@@ -24,17 +25,4 @@ class LoginDataSource {
             Result.Error(e)
         }
     }
-//    fun login(username: String, password: String): Result<LoggedInUser> {
-//        try {
-//            // TODO: handle loggedInUser authentication
-//            val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")
-//            return Result.Success(fakeUser)
-//        } catch (e: Throwable) {
-//            return Result.Error(IOException("Error logging in", e))
-//        }
-//    }
-//
-//    fun logout() {
-//        // TODO: revoke authentication
-//    }
 }

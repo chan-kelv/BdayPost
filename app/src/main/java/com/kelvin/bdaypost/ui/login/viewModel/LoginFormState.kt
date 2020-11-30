@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.ui.login
+package com.kelvin.bdaypost.ui.login.viewModel
 
 /**
  * Data validation state of the login form.
