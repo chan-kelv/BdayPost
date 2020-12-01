@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BirthdayMainFragment">
+    tools:context=".ui.birthday.landing.BirthdayMainFragment">
 
     <TextView
         android:id="@+id/text_today"

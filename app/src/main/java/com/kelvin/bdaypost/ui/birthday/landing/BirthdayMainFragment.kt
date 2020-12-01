@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost
+package com.kelvin.bdaypost.ui.birthday.landing
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.kelvin.bdaypost.BuildConfig
+import com.kelvin.bdaypost.R
 import com.kelvin.bdaypost.databinding.FragmentBdayMainBinding
 
 /**
@@ -17,7 +19,8 @@ class BirthdayMainFragment : Fragment() {
 
     private var _bdayMainBinding: FragmentBdayMainBinding? = null
     // only use this between onCreateView and onDestroyView
-    private val bdayMainBind get() = _bdayMainBinding!!
+    private val bdayMainBind
+        get() = _bdayMainBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +53,7 @@ class BirthdayMainFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) = BirthdayMainFragment()
+        fun newInstance() =
+            BirthdayMainFragment()
     }
 }

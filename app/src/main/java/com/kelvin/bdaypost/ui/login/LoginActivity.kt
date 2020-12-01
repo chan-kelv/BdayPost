@@ -75,10 +75,10 @@ class LoginActivity : AppCompatActivity() {
     private fun observeLoginState(loginState: LoginFormState?) {
         loginState?.let {
             loginState.usernameError?.let { emailErrorRes ->
-                loginBinding.inputEmail.error = this.getStringFromRes(emailErrorRes)
+                loginBinding.inputEmail.error = this.getString(emailErrorRes)
             }
             loginState.passwordError?.let {pwErrorRes ->
-                loginBinding.inputPassword.error = this.getStringFromRes(pwErrorRes)
+                loginBinding.inputPassword.error = this.getString(pwErrorRes)
             }
         }
     }

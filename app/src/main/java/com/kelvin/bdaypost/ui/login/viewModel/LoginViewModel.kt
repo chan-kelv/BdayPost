@@ -2,7 +2,7 @@ package com.kelvin.bdaypost.ui.login.viewModel
 
 import androidx.lifecycle.*
 import com.kelvin.bdaypost.R
-import com.kelvin.bdaypost.data.loginData.AuthenticationRepository
+import com.kelvin.bdaypost.data.authData.AuthenticationRepository
 import com.kelvin.bdaypost.data.Result
 import com.kelvin.bdaypost.util.CredentialUtil.Companion.isValidEmail
 import kotlinx.coroutines.Dispatchers.IO
@@ -77,9 +77,7 @@ class LoginViewModel(private val authRepo: AuthenticationRepository) : ViewModel
     class LoginViewModelFactory(private val authRepo: AuthenticationRepository = AuthenticationRepository.getInstance()) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return LoginViewModel(
-                authRepo
-            ) as T
+            return LoginViewModel(authRepo) as T
         }
     }
 }

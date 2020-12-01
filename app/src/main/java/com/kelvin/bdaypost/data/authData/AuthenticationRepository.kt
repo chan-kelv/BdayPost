@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.data.loginData
+package com.kelvin.bdaypost.data.authData
 
 import com.kelvin.bdaypost.data.Result
 
