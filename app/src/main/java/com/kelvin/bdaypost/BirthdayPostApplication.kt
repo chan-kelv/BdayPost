@@ -1,9 +1,11 @@
 package com.kelvin.bdaypost
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-class BirthdayPostApplication: Application() {
+@HiltAndroidApp
+class BirthdayPostApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
