@@ -6,7 +6,9 @@ import com.kelvin.bdaypost.util.SharedPrefsUtil
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 @AndroidEntryPoint
 class NotificationMessagingService : FirebaseMessagingService() {
 
@@ -26,15 +28,18 @@ class NotificationMessagingService : FirebaseMessagingService() {
         sharedPrefsUtil.putString(NOTIFICATION_KEY, token)
     }
 
+    /**
+     * Called when app is in foreground. If app is in background, notification goes directly
+     * into system notifications tray.
+     */
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Timber.d("From: ${remoteMessage.from}")
-
-        // Check if message contains a data payload.
-        if (remoteMessage.data.isNotEmpty()) {
-            val title: String? = remoteMessage.data[NOTIFICATION_TITLE]
-            val content: String? = remoteMessage.data[NOTIFICATION_CONTENT]
+        remoteMessage.notification?.let { notification ->
+            val title: String? = notification.title
+            val content: String? = notification.body
             if (!title.isNullOrBlank() && !content.isNullOrBlank())
                 notificationSender.sendBirthdayNotification(title, content)
         }
     }
+
 }
