@@ -1,13 +1,30 @@
 package com.kelvin.bdaypost.data.contactData
 
+import com.kelvin.bdaypost.data.Result
 import com.kelvin.bdaypost.data.model.ContactInfo
+import com.kelvin.bdaypost.util.DateUtil
+import timber.log.Timber
 
 class ContactRepository private constructor(
     private var contactNetwork: ContactNetwork = ContactNetwork()
 ) {
-    suspend fun addNewContactBirthdate(name: String, birthdate: String, address: String) {
-        val contactInfo = ContactInfo(name, birthdate, address)
-        contactNetwork.saveContactBirthday(contactInfo)
+    suspend fun addNewContactInfo(name: String, address: String): String? {
+        val contactInfo = ContactInfo(name, address)
+        val contactNodeIdTask = contactNetwork.saveContactInfo(contactInfo)
+        return if (contactNodeIdTask is Result.Success && contactNodeIdTask.data.isNotBlank()) {
+            contactNodeIdTask.data
+        } else {
+            if (contactNodeIdTask is Result.Error) {
+                Timber.e(contactNodeIdTask.exception)
+            }
+            null
+        }
+    }
+
+    suspend fun addContactBirthday(contactId: String, birthMonth: String, birthDate: String): Boolean {
+        val birthDateOfYear = DateUtil.getDayOfYear(birthMonth.toInt(), birthDate.toInt())
+        val successTask = contactNetwork.recordContactBirthday(contactId, birthDateOfYear)
+        return successTask is Result.Success
     }
 
     companion object {

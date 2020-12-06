@@ -26,8 +26,14 @@ class AddBirthdayViewModel(private val contactRepo: ContactRepository): ViewMode
         return currContactState.isValidForm
     }
 
-    fun addContactBirthdate(name: String, birthdate: String, address: String) {
-        viewModelScope.launch { contactRepo.addNewContactBirthdate(name, birthdate, address) }
+    fun addContactBirthday(name: String, birthday: String, address: String) {
+        viewModelScope.launch {
+            val contactId = contactRepo.addNewContactInfo(name, address)
+            if (!contactId.isNullOrBlank()) {
+                val birthDateSplit = birthday.split("/") // HACK: will replace with data model after tests
+                contactRepo.addContactBirthday(contactId, birthDateSplit[0], birthDateSplit[1])
+            }
+        }
     }
 
     data class ContactFormState (

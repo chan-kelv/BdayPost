@@ -14,11 +14,34 @@ class ContactNetwork {
     private val fbAuth = FirebaseAuth.getInstance()
     private val fbDb = Firebase.database.reference
 
-    suspend fun saveContactBirthday(contactInfo: ContactInfo): Result<Void> {
+    suspend fun saveContactInfo(contactInfo: ContactInfo): Result<String> {
         fbAuth.currentUser?.uid?.let { uid ->
-            val contactRes = fbDb.child(uid).child("contact-info")
-                .push().setValue(contactInfo).await()
-            return Result.Success(contactRes)
+            return try {
+                val contactNode = fbDb.child(uid).child("contact-info").push()
+                val contactNodeKey = contactNode.key ?: ""
+                contactInfo.uuid = contactNodeKey
+                contactNode.setValue(contactInfo).await()
+                Result.Success(contactNodeKey)
+            } catch (e: Exception) {
+                Timber.e(e)
+                Result.Error(e)
+            }
+        } ?: run {
+            Timber.e("Could not find auth uid")
+            return Result.Error(Exception("Could not find auth uid"))
+        }
+    }
+
+    suspend fun recordContactBirthday(contactId: String, dayOfYear: Int): Result<Void> {
+        fbAuth.currentUser?.uid?.let {
+            return try {
+                val saveTask = fbDb.child(it).child("contact-birthday")
+                    .child(dayOfYear.toString()).push().setValue(contactId).await()
+                Result.Success(saveTask)
+            } catch (e: Exception) {
+                Timber.e(e)
+                Result.Error(e)
+            }
         } ?: run {
             Timber.e("Could not find auth uid")
             return Result.Error(Exception("Could not find auth uid"))

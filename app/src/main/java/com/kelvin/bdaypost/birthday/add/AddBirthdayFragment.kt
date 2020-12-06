@@ -71,7 +71,7 @@ class AddBirthdayFragment : Fragment() {
         val addr = addBdayBinding.inputAddBdayContactAddr.text.toString()
         addBdayVM?.let { vm ->
             if (vm.validateContactFormState(name, birthdate, addr)) {
-                vm.addContactBirthdate(name, birthdate, addr)
+                vm.addContactBirthday(name, birthdate, addr)
             }
         }
     }
