@@ -1,11 +1,12 @@
 package com.kelvin.bdaypost.util
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SharedPrefsUtil @Inject constructor(private val context: Context) {
+class SharedPrefsUtil @Inject constructor(@ApplicationContext private val context: Context) {
 
     fun putString(key: String, value: String) {
         context

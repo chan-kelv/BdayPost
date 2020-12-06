@@ -1,7 +1,5 @@
 package com.kelvin.bdaypost.data
 
-import kotlinx.coroutines.CompletionHandler
-
 /**
  * A generic class that holds a value with its loading status.
  * @param <T>

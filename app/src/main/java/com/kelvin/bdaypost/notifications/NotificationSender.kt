@@ -10,14 +10,15 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.kelvin.bdaypost.MainActivity
 import com.kelvin.bdaypost.R
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class NotificationSender @Inject constructor(private val context: Context) {
+class NotificationSender @Inject constructor(@ApplicationContext private val context: Context) {
 
     init {
-        // Register notification channel with the system on init
+        // Register notification channel with the system on init.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 NOTIFICATION_CHANNEL_ID,
@@ -37,7 +38,7 @@ class NotificationSender @Inject constructor(private val context: Context) {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 
         val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.drawable.ic_cake_24px)
             .setContentTitle(title)
             .setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
