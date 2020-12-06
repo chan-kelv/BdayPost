@@ -26,13 +26,13 @@
         android:id="@+id/input_addBday_contactAddr"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Address"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="@+id/input_addBday_contactName"
         app:layout_constraintStart_toStartOf="@+id/input_addBday_contactName"
-        app:layout_constraintTop_toBottomOf="@+id/input_addBday_contactDate" />
+        app:layout_constraintTop_toBottomOf="@+id/label_addBday_bdayLabel" />
 
     <Button
         android:id="@+id/btn_addBday_addContact"
@@ -44,16 +44,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_addBday_contactAddr" />
 
-    <EditText
-        android:id="@+id/input_addBday_contactDate"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spin_addBday_month"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
+        android:layout_marginStart="24dp"
+        android:ems="3"
         android:inputType="date"
-        android:hint="Birthdate"
-        app:layout_constraintEnd_toEndOf="@+id/input_addBday_contactName"
+        app:layout_constraintBottom_toBottomOf="@+id/label_addBday_bdayLabel"
+        app:layout_constraintStart_toEndOf="@+id/label_addBday_bdayLabel"
+        app:layout_constraintTop_toTopOf="@+id/label_addBday_bdayLabel" />
+
+    <TextView
+        android:id="@+id/label_addBday_bdayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/addBday_bday_label"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/input_addBday_contactName"
         app:layout_constraintTop_toBottomOf="@+id/input_addBday_contactName" />
+
+    <Spinner
+        android:id="@+id/spin_addBday_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spin_addBday_month"
+        app:layout_constraintStart_toEndOf="@+id/spin_addBday_month"
+        app:layout_constraintTop_toTopOf="@+id/spin_addBday_month" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

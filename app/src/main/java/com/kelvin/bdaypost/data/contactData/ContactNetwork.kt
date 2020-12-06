@@ -32,12 +32,12 @@ class ContactNetwork {
         }
     }
 
-    suspend fun recordContactBirthday(contactId: String, dayOfYear: Int): Result<Void> {
+    suspend fun recordContactBirthday(contactId: String, dayOfYear: Int): Result<String> {
         fbAuth.currentUser?.uid?.let {
             return try {
-                val saveTask = fbDb.child(it).child("contact-birthday")
-                    .child(dayOfYear.toString()).push().setValue(contactId).await()
-                Result.Success(saveTask)
+                val bdayUid = fbDb.child(it).child("contact-birthday").child(dayOfYear.toString()).push()
+                bdayUid.setValue(contactId).await()
+                Result.Success(bdayUid.key ?: "")
             } catch (e: Exception) {
                 Timber.e(e)
                 Result.Error(e)

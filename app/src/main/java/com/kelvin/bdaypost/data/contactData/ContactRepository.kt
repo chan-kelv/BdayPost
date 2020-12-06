@@ -21,8 +21,8 @@ class ContactRepository private constructor(
         }
     }
 
-    suspend fun addContactBirthday(contactId: String, birthMonth: String, birthDate: String): Boolean {
-        val birthDateOfYear = DateUtil.getDayOfYear(birthMonth.toInt(), birthDate.toInt())
+    suspend fun addContactBirthday(contactId: String, birthMonth: Int, birthDate: Int): Boolean {
+        val birthDateOfYear = DateUtil.getDayOfYear(birthMonth, birthDate)
         val successTask = contactNetwork.recordContactBirthday(contactId, birthDateOfYear)
         return successTask is Result.Success
     }
