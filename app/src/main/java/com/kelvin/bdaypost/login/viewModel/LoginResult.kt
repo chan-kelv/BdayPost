@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.ui.login.viewModel
+package com.kelvin.bdaypost.login.viewModel
 
 /**
  * Authentication result : success (firebase uuid) or error message.

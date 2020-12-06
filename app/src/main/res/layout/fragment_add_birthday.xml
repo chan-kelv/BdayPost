@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.birthday.add.AddBirthdayFragment">
+    tools:context=".birthday.add.AddBirthdayFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

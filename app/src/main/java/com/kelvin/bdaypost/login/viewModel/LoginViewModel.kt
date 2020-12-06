@@ -1,10 +1,10 @@
-package com.kelvin.bdaypost.ui.login.viewModel
+package com.kelvin.bdaypost.login.viewModel
 
 import androidx.lifecycle.*
 import com.kelvin.bdaypost.R
-import com.kelvin.bdaypost.data.authData.AuthenticationRepository
 import com.kelvin.bdaypost.data.Result
-import com.kelvin.bdaypost.util.CredentialUtil.Companion.isValidEmail
+import com.kelvin.bdaypost.login.data.AuthenticationRepository
+import com.kelvin.bdaypost.util.CredentialUtil.isValidEmail
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch

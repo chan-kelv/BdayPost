@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.data.authData
+package com.kelvin.bdaypost.login.data
 
 import com.kelvin.bdaypost.data.Result
 
@@ -43,8 +43,10 @@ class AuthenticationRepository private constructor(
         @Volatile
         private var instance: AuthenticationRepository? = null
 
-        fun getInstance() = instance ?: synchronized(this) {
-            instance ?: AuthenticationRepository().also {
+        fun getInstance() = instance
+            ?: synchronized(this) {
+            instance
+                ?: AuthenticationRepository().also {
                 instance = it
             }
         }

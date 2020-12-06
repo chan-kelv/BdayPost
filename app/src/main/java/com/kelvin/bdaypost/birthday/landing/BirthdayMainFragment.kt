@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.ui.birthday.landing
+package com.kelvin.bdaypost.birthday.landing
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

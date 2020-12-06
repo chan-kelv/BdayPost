@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.data.authData
+package com.kelvin.bdaypost.login.data
 
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth

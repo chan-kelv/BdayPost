@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.ui.birthday.add
+package com.kelvin.bdaypost.birthday.add
 
 import android.os.Bundle
 import android.view.LayoutInflater
