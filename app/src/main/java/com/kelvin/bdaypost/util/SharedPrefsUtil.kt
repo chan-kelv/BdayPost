@@ -10,13 +10,13 @@ class SharedPrefsUtil @Inject constructor(@ApplicationContext private val contex
 
     fun putString(key: String, value: String) {
         context
-            .getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
+            .getSharedPreferences(BDAY_SHARED_PREF_KEY, Context.MODE_PRIVATE)
             .edit()
             .putString(key, value)
             .apply()
     }
 
     companion object {
-        const val SHARED_PREF_KEY = "bday_post_shared_pref"
+        const val BDAY_SHARED_PREF_KEY = "bday_post_shared_pref"
     }
 }
