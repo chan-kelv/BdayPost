@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.ui.login
+package com.kelvin.bdaypost.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.kelvin.bdaypost.MainActivity
 
 import com.kelvin.bdaypost.databinding.ActivityLoginBinding
-import com.kelvin.bdaypost.ui.login.viewModel.LoginFormState
-import com.kelvin.bdaypost.ui.login.viewModel.LoginResult
-import com.kelvin.bdaypost.ui.login.viewModel.LoginViewModel
-import com.kelvin.bdaypost.util.TextResUtil.Companion.getStringFromRes
-import com.kelvin.bdaypost.util.TextResUtil.Companion.showToast
+import com.kelvin.bdaypost.login.viewModel.LoginFormState
+import com.kelvin.bdaypost.login.viewModel.LoginResult
+import com.kelvin.bdaypost.login.viewModel.LoginViewModel
+import com.kelvin.bdaypost.util.TextResUtil.getStringFromRes
+import com.kelvin.bdaypost.util.TextResUtil.showToast
 
 class LoginActivity : AppCompatActivity() {
 

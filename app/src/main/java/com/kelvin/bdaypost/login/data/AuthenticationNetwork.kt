@@ -1,9 +1,8 @@
-package com.kelvin.bdaypost.data.loginData
+package com.kelvin.bdaypost.login.data
 
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.kelvin.bdaypost.data.Result
 import kotlinx.coroutines.tasks.await
