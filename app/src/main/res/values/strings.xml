@@ -19,6 +19,8 @@
     <string name="addBday_bday_label">Birthday:</string>
     <string name="addBday_bday_month">month</string>
     <string name="addBday_bday_date">date</string>
+    <string name="addBday_bday_failed">Could not add Birtday at this time!</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="landing_searchFriend">Search Friend</string>

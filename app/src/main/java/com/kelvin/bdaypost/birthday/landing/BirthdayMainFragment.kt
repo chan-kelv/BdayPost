@@ -31,6 +31,7 @@ class BirthdayMainFragment : Fragment() {
 
         bdayMainBind.btnAddBday.setOnClickListener { navToAddBday() }
 
+        // HACK: For dev testing-switch between accounts by logging out...TODO
         if (BuildConfig.DEBUG) {
             bdayMainBind.btnLogoutDebug.visibility = View.VISIBLE
             bdayMainBind.btnLogoutDebug.setOnClickListener { logout() }

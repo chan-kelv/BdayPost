@@ -1,4 +1,4 @@
-package com.kelvin.bdaypost.data.model
+package com.kelvin.bdaypost.birthday.data.model
 
 object Month {
     val monthList = listOf(
