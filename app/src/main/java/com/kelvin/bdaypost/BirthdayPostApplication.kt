@@ -22,7 +22,7 @@ class BirthdayPostApplication : Application() {
     }
 
     /**
-     * Log Firebase Messaging token to logcat for easy notification testing.
+     * Log Firebase Messaging token to logcat for notification testing.
      */
     private fun logFirebaseMessagingToken() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->

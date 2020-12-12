@@ -119,8 +119,9 @@ class AddBirthdayFragment : Fragment() {
             if (vm.validateContactFormState(name, addr)) {
                 val bdayMonth = addBdayBinding.spinAddBdayMonth.selectedItem.toString()
                 val bdayDate = addBdayBinding.spinAddBdayDate.selectedItem.toString()
-                val birthday = Birthday.generateBirthday(bdayMonth, bdayDate)
-                vm.addContactBirthday(name, birthday, addr)
+                Birthday.generateBirthday(bdayMonth, bdayDate)?.let { birthday ->
+                    vm.addContactBirthday(name, birthday, addr)
+                }
             }
         }
     }
