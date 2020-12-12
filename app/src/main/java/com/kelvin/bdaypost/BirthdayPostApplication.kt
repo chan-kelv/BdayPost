@@ -9,10 +9,6 @@ import javax.inject.Inject
 
 @HiltAndroidApp
 class BirthdayPostApplication : Application() {
-
-    @Inject
-    lateinit var notificationSender: NotificationSender
-
     override fun onCreate() {
         super.onCreate()
 

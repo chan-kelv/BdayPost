@@ -18,7 +18,6 @@ class AddBirthdayViewModel(private val contactRepo: ContactRepository) : ViewMod
     val addContactResult: LiveData<ContactAddedResult> = _addContactResult
 
     /**
-     * TODO needs to actually validate proper data after fb db set up
      * Validates the state of adding a new contact's bday
      * NameError - The name must not be blank
      * AddressError - The address must not be blank

@@ -41,13 +41,12 @@ class AddBirthdayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        context?.let { addDatePicker(it) }
-
+        // create VM
         addBdayVM = activity?.run {
             ViewModelProvider(this, AddBirthdayViewModel.AddBirthdayVMFactory())
                 .get(AddBirthdayViewModel::class.java)
         }
-
+        // Add VM observers
         addBdayVM?.run {
             this.validContactForm.observe(
                 this@AddBirthdayFragment.viewLifecycleOwner,
@@ -60,8 +59,13 @@ class AddBirthdayFragment : Fragment() {
             )
         }
 
+
+        // configure date picker for birthday spinner
+        context?.let { addDatePicker(it) }
+        // add btn listener for confirm saving birthday
         addBdayBinding.btnAddBdayAddContact.setOnClickListener { saveBday() }
 
+        // debug address for easy testing
         if (BuildConfig.DEBUG) {
             addBdayBinding.inputAddBdayContactName.setText("Kelvin")
             addBdayBinding.inputAddBdayContactAddr.setText("742 evergreen terrace")
