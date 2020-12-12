@@ -40,17 +40,11 @@ Relies on the user being authenticaed, so we can assume `FirebaseAuth.User.UID !
 
 ![add contact](./doc/readMe-Src/ContactER.jpg)
 
-- Birthday has Month and date
+- Birthday getDayOfYear() - convert the month:Int, date:Int into a date range of 0-365
+  - **date 0 is assumed to be Feb 29**
+  - Jan 1 = 1 ... Dec 31 = 365 **(excluding Feb 29)**
 
-  - birthday has a method to convert the month,date into a date range of 0-365
-    - **date 0 is assumed to be Feb 29**
-    - Jan 1 = 1 ... Dec 31 = 365 (excluding Feb 29)
-
-- Contact Info
-  - has name and address
-  - generates a UUID from saving into firebaseDatabase with a push()
-
-Flow:
+**Flow:**
 
 1. Login/Register gives the FirebaseAuth.UserId
 2. Save the new contact Info filled in
